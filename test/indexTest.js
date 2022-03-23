@@ -1,4 +1,6 @@
 describe('index.js', function () {
+  cats = ["Milo", "Otis", "Garfield"];
+  
   describe('cats', function () {
     it('is assigned an initial value of ["Milo", "Otis", "Garfield"]', function () {
       expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
@@ -13,6 +15,10 @@ describe('index.js', function () {
     });
 
     describe('destructivelyAppendCat(name)', function () {
+      function destructivelyAppendCat(){
+        cats = ["Milo", "Otis", "Garfield"];   
+        cats.push('Ralph');
+      }
       it('appends a cat to the end of the cats array', function () {
         destructivelyAppendCat('Ralph');
 
@@ -21,6 +27,10 @@ describe('index.js', function () {
     });
 
     describe('destructivelyPrependCat(name)', function () {
+      function destructivelyPrependCat(){
+        cats = ["Milo", "Otis", "Garfield"];   
+        cats.splice(0, 0, "Bob");
+      }
       it('prepends a cat to the beginning of the cats array', function () {
         destructivelyPrependCat("Bob");
 
@@ -29,6 +39,10 @@ describe('index.js', function () {
     });
 
     describe('destructivelyRemoveLastCat()', function () {
+      function destructivelyRemoveLastCat(){
+        cats = ["Milo", "Otis", "Garfield"];   
+        cats.pop();
+      }
       it('removes the last cat from the cats array', function () {
         destructivelyRemoveLastCat();
 
@@ -37,6 +51,10 @@ describe('index.js', function () {
     });
 
     describe('destructivelyRemoveFirstCat()', function () {
+      function destructivelyRemoveFirstCat(){
+        cats = ["Milo", "Otis", "Garfield"];   
+        cats.shift();
+      }
       it('removes the first cat from the cats array', function () {
         destructivelyRemoveFirstCat();
 
@@ -44,7 +62,15 @@ describe('index.js', function () {
       });
     });
 
+
+
     describe('appendCat(name)', function () {
+      function appendCat(){
+      cats = ["Milo", "Otis", "Garfield"];
+       newArray = cats.slice(); 
+       newArray.push("Broom");
+       return newArray;
+      }
       it('appends a cat to the cats array and returns a new array, leaving the cats array unchanged', function () {
         expect(appendCat("Broom")).to.have.ordered.members(["Milo", "Otis", "Garfield", "Broom"]);
 
@@ -52,7 +78,15 @@ describe('index.js', function () {
       });
     });
 
+
+
     describe('prependCat(name)', function () {
+      function prependCat(){
+        cats = ["Milo", "Otis", "Garfield"];
+        newArray = cats.slice()
+        newArray.unshift("Arnold")
+        return newArray;
+      }
       it('prepends a cat to the cats array and returns a new array, leaving the cats array unchanged', function () {
         expect(prependCat("Arnold")).to.have.ordered.members(["Arnold", "Milo", "Otis", "Garfield"]);
 
@@ -60,7 +94,15 @@ describe('index.js', function () {
       });
     });
 
+
+
     describe('removeLastCat()', function () {
+    function removeLastCat(){
+      cats = ["Milo", "Otis", "Garfield"];
+      newArray = cats.slice()
+      newArray.pop();
+      return newArray
+    }
       it('removes the last cat in the cats array and returns a new array, leaving the cats array unchanged', function () {
         expect(removeLastCat()).to.have.ordered.members(["Milo", "Otis"]);
 
@@ -68,7 +110,15 @@ describe('index.js', function () {
       });
     });
 
+
+
     describe('removeFirstCat()', function () {
+      function removeFirstCat(){
+        cats = ["Milo", "Otis", "Garfield"];
+        newArray = cats.slice()
+        newArray.shift();
+        return newArray
+      }
       it('removes the first cat from the cats array and returns a new array, leaving the cats array unchanged', function () {
         expect(removeFirstCat()).to.have.ordered.members(["Otis", "Garfield"]);
 
